@@ -7,15 +7,12 @@ class Redic::Cluster
 
   def initialize(url="redis://localhost:12001", timeout=10_000_000)
     @url   = url
-    @node  = Redic::Client.new(url, timeout)
+    @node  = Redic.new(url, timeout)
     @debug = false
   end
 
   def call(*args)
-    res = @node.connect do
-      @node.write(args)
-      @node.read
-    end
+    res = @node.call(*args)
 
     return res unless res.is_a?(RuntimeError)
 
@@ -26,9 +23,9 @@ class Redic::Cluster
 
       $stderr.puts "-> Redirected to slot [#{slot}] located at #{addr}" if @debug
 
-      @node.connect { @node.write(["QUIT"]) }
+      @node.call("QUIT")
 
-      @node = Redic::Client.new("redis://#{addr}", @node.timeout)
+      @node = Redic.new("redis://#{addr}", @node.timeout)
 
       call(*args)
     else
