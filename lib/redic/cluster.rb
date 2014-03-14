@@ -32,4 +32,12 @@ class Redic::Cluster
       res
     end
   end
+
+  def queue(*args)
+    @node.queue(*args)
+  end
+
+  def commit
+    @node.commit
+  end
 end
