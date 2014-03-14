@@ -26,6 +26,8 @@ class Redic::Cluster
 
       $stderr.puts "-> Redirected to slot [#{slot}] located at #{addr}" if @debug
 
+      @node.call("QUIT")
+
       @node = Redic::Client.new("redis://#{addr}", @node.timeout)
 
       call(*args)
