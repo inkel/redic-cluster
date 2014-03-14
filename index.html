@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Redic-cluster by inkel</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Redic-cluster</h1>
+        <p>Redis Cluster support for Redic</p>
+
+        <p class="view"><a href="https://github.com/inkel/redic-cluster">View the Project on GitHub <small>inkel/redic-cluster</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/inkel/redic-cluster/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/inkel/redic-cluster/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/inkel/redic-cluster">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="redic-cluster" class="anchor" href="#redic-cluster"><span class="octicon octicon-link"></span></a>redic-cluster</h1>
+
+<p>Redis Cluster support for Redic</p>
+
+<h2>
+<a name="description" class="anchor" href="#description"><span class="octicon octicon-link"></span></a>Description</h2>
+
+<p>Adds Redis Cluster support for <a href="https://github.com/amakawa/redic">redic</a>, the lightweight
+<a href="http://redis.io/documentation">Redis</a> client.</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<div class="highlight highlight-ruby"><pre><span class="nb">require</span> <span class="s2">"redic/cluster"</span>
+
+<span class="c1"># Connect to a node in the cluster</span>
+<span class="n">node</span> <span class="o">=</span> <span class="no">Redic</span><span class="o">::</span><span class="no">Cluster</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"redis://localhost:12001"</span><span class="p">)</span>
+
+<span class="c1"># Use the same as you</span>
+<span class="n">redis</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">"SET"</span><span class="p">,</span> <span class="s2">"foo"</span><span class="p">,</span> <span class="s2">"bar"</span><span class="p">)</span>
+<span class="n">redis</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"foo"</span><span class="p">)</span>
+</pre></div>
+
+<p><code>Redic::Cluster</code> will transparently follow the redirection to the node
+that allocates the slot where <code>foo</code> exists. If the <code>debug</code> property is
+set to <code>true</code>, <code>Redic::Cluster</code> will inform the redirection in
+<code>$stderr</code>:</p>
+
+<div class="highlight highlight-ruby"><pre><span class="nb">require</span> <span class="s2">"redic/cluster"</span>
+
+<span class="c1"># Connect to a node in the cluster</span>
+<span class="n">node</span> <span class="o">=</span> <span class="no">Redic</span><span class="o">::</span><span class="no">Cluster</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"redis://localhost:12001"</span><span class="p">)</span>
+
+<span class="c1"># Enable redirections log</span>
+<span class="n">node</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="kp">true</span>
+
+<span class="c1"># Use the same as you</span>
+<span class="n">redis</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">"SET"</span><span class="p">,</span> <span class="s2">"foo"</span><span class="p">,</span> <span class="s2">"bar"</span><span class="p">)</span>
+<span class="c1"># Will print in $stderr</span>
+<span class="c1">#   -&gt; Redirected to slot [12182] located at 127.0.0.1:12004</span>
+</pre></div>
+
+<h2>
+<a name="instalation" class="anchor" href="#instalation"><span class="octicon octicon-link"></span></a>Instalation</h2>
+
+<p>You can install it using rubygems.</p>
+
+<pre><code>$ gem install redic-cluster
+</code></pre>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/inkel">inkel</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
