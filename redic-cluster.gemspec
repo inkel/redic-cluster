@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name              = "redic-cluster"
-  s.version           = "0.0.4"
+  s.version           = "0.0.5"
   s.summary           = "Redis Cluster support for Redic"
   s.description       = "Redis Cluster support for Redic, the lightweight Redis client"
   s.authors           = ["Leandro López"]
@@ -11,4 +11,6 @@ Gem::Specification.new do |s|
   s.license           = "MIT"
 
   s.files             = `git ls-files`.split("\n")
+
+  s.add_dependency   "redic"
 end
