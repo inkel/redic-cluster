@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name              = "redic-cluster"
-  s.version           = "0.0.5"
+  s.version           = "0.0.6"
   s.summary           = "Redis Cluster support for Redic"
   s.description       = "Redis Cluster support for Redic, the lightweight Redis client"
   s.authors           = ["Leandro López"]

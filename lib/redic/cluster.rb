@@ -33,6 +33,8 @@ class Redic::Cluster
     end
   end
 
+  alias_method :call!, :call
+
   def queue(*args)
     @node.queue(*args)
   end
