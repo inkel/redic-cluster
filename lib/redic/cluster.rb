@@ -35,6 +35,14 @@ class Redic::Cluster
 
   alias_method :call!, :call
 
+  def get(key)
+    call("get", key)
+  end
+
+  def set(key, value)
+    call("set", key, value)
+  end
+
   def queue(*args)
     @node.queue(*args)
   end

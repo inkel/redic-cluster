@@ -19,8 +19,8 @@ require "redic/cluster"
 node = Redic::Cluster.new("redis://localhost:12001")
 
 # Use the same as you
-redis.call("SET", "foo", "bar")
-redis.call("GET", "foo")
+redis.set("foo", "bar")
+redis.get("foo")
 ```
 
 `Redic::Cluster` will transparently follow the redirection to the node
@@ -38,7 +38,7 @@ node = Redic::Cluster.new("redis://localhost:12001")
 node.debug = true
 
 # Use the same as you
-redis.call("SET", "foo", "bar")
+redis.set("foo", "bar")
 # Will print in $stderr
 #   -> Redirected to slot [12182] located at 127.0.0.1:12004
 ```
